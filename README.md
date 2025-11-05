@@ -1,0 +1,2 @@
+# Spring Boot proficiency demo project - 2
+Spring Boot project using a couple of technologies to demonstrate proficiency in the framework, such as Spring Kafka, Spring Data MongoDB, OpenAPI documentation and more.
