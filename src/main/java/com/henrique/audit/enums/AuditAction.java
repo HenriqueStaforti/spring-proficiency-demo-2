@@ -8,5 +8,6 @@ public enum AuditAction {
     LOGIN,
     LOGOUT,
     APPROVE,
-    REJECT
+    REJECT,
+    REGISTER
 }
