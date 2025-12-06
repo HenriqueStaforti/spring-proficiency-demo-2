@@ -1,4 +1,4 @@
-package com.henrique.audit.listener;
+package com.henrique.audit.config.messaging.consumer;
 
 import com.henrique.audit.dto.AuditEventRequestDTO;
 import com.henrique.audit.service.AuditEventService;

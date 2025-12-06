@@ -1,4 +1,4 @@
-package com.henrique.audit.model;
+package com.henrique.audit.entity;
 
 import com.henrique.audit.enums.AuditAction;
 import lombok.AllArgsConstructor;

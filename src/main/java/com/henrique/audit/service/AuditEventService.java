@@ -1,7 +1,7 @@
 package com.henrique.audit.service;
 
 import com.henrique.audit.dto.AuditEventRequestDTO;
-import com.henrique.audit.model.AuditEvent;
+import com.henrique.audit.entity.AuditEvent;
 import com.henrique.audit.repository.AuditRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
