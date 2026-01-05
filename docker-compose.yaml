@@ -1,3 +1,4 @@
+name: audit
 services:
   kafka:
     image: apache/kafka:4.0.1
