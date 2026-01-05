@@ -1,6 +1,6 @@
 package com.henrique.audit.controller;
 
-import com.henrique.audit.dto.AuditEventRequestDTO;
+import com.henrique.audit.dto.AuditEventDTO;
 import com.henrique.audit.service.AuditProducer;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -30,7 +30,7 @@ public class AuditController {
         @ApiResponse(responseCode = "500", description = "Internal Server Error")
     })
     @PostMapping
-    public ResponseEntity<Void> publishAuditEvent(@Valid @RequestBody AuditEventRequestDTO dto) {
+    public ResponseEntity<Void> publishAuditEvent(@Valid @RequestBody AuditEventDTO dto) {
         auditProducer.publish(dto);
         return ResponseEntity.accepted().build();
     }

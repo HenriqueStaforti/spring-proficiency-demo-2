@@ -22,4 +22,4 @@ server:
 app:
   kafka:
     topics:
-      audit-events: ${APP_KAFKA_TOPIC_AUDIT_EVENTS:audit-topic}
+      audit-events: ${APP_KAFKA_TOPIC_AUDIT_EVENTS:audit-events}

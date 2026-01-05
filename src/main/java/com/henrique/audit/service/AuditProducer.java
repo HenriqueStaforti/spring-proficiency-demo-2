@@ -1,6 +1,6 @@
 package com.henrique.audit.service;
 
-import com.henrique.audit.dto.AuditEventRequestDTO;
+import com.henrique.audit.dto.AuditEventDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,17 +10,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuditProducer {
 
-    private final KafkaTemplate<String, AuditEventRequestDTO> kafkaTemplate;
+    private final KafkaTemplate<String, AuditEventDTO> kafkaTemplate;
     private static final Logger log = LoggerFactory.getLogger(AuditProducer.class);
 
     @Value("${app.kafka.topics.audit-events}")
     private String topic;
 
-    public AuditProducer(KafkaTemplate<String, AuditEventRequestDTO> kafkaTemplate) {
+    public AuditProducer(KafkaTemplate<String, AuditEventDTO> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void publish(AuditEventRequestDTO dto) {
+    public void publish(AuditEventDTO dto) {
         log.info("Publishing audit event: {} on topic {}", dto, topic);
         kafkaTemplate.send(topic, dto)
             .whenComplete((result, exception) -> {

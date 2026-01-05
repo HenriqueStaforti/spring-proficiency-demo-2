@@ -1,6 +1,6 @@
 package com.henrique.audit.service;
 
-import com.henrique.audit.dto.AuditEventRequestDTO;
+import com.henrique.audit.dto.AuditEventDTO;
 import com.henrique.audit.entity.AuditEvent;
 import com.henrique.audit.repository.AuditRepository;
 import org.slf4j.Logger;
@@ -16,7 +16,7 @@ public class AuditEventService {
         this.auditRepository = auditRepository;
     }
 
-    public void saveEvent(AuditEventRequestDTO dto) {
+    public void saveEvent(AuditEventDTO dto) {
         try {
             AuditEvent auditEvent = AuditEvent.builder()
                     .action(dto.action())

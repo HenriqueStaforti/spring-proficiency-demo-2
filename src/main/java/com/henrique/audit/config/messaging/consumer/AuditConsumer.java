@@ -1,6 +1,6 @@
 package com.henrique.audit.config.messaging.consumer;
 
-import com.henrique.audit.dto.AuditEventRequestDTO;
+import com.henrique.audit.dto.AuditEventDTO;
 import com.henrique.audit.service.AuditEventService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +18,7 @@ public class AuditConsumer {
     }
 
     @KafkaListener(topics = "${app.kafka.topics.audit-events}", groupId = "${spring.kafka.consumer.group-id}")
-    public void consume(AuditEventRequestDTO event) {
+    public void consume(AuditEventDTO event) {
         log.info("Consuming audit event: {}", event);
         auditEventService.saveEvent(event);
     }

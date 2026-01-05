@@ -8,7 +8,7 @@ import jakarta.validation.constraints.PastOrPresent;
 import java.time.Instant;
 import java.util.Map;
 
-public record AuditEventRequestDTO (
+public record AuditEventDTO(
 
         @NotBlank(message = "Entity type is required")
         String entityType,
