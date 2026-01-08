@@ -1,3 +1,6 @@
+server:
+  port: 8081
+
 spring:
   data:
     mongodb:
@@ -9,17 +12,44 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     consumer:
-      group-id: ${SPRING_KAFKA_CONSUMER_GROUP_ID:audit-service-group}
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
-        spring.json.trusted.packages: "com.henrique.audit.dto"
+        spring.json.trusted.packages: "com.henrique.audit.dto.audit"
 
-server:
-  port: 8081
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      groqAI:
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 30s
+        permittedNumberOfCallsInHalfOpenState: 3
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,circuitbreakers,circuitbreakerevents
+  endpoint:
+    health:
+      show-details: when_authorized
+
+  health:
+    circuitbreakers:
+      enabled: true
 
 app:
   kafka:
     topics:
       audit-events: ${APP_KAFKA_TOPIC_AUDIT_EVENTS:audit-events}
+    group-ids:
+      audit-service-group: audit-service-group
+      audit-ai-group: audit-ai-group
+  groq:
+    api:
+      baseUrl: https://api.groq.com/openai
+      completionUrl: /v1/chat/completions
+      key: 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
