@@ -3,7 +3,6 @@ package com.henrique.audit.infrastructure.messaging.consumer.groq;
 import com.henrique.audit.dto.ai.AIClassificationResultDto;
 import com.henrique.audit.dto.audit.AuditEventDTO;
 import com.henrique.audit.service.ai.AIClassificationService;
-import com.henrique.audit.service.audit.AuditEventService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;

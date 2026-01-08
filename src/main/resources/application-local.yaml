@@ -52,4 +52,4 @@ app:
     api:
       baseUrl: https://api.groq.com/openai
       completionUrl: /v1/chat/completions
-      key: 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
+      key: ${APP_GROQ_API_KEY:replace_with_groq_key}

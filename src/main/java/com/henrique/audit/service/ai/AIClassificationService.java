@@ -7,14 +7,10 @@ import com.henrique.audit.dto.groq.GroqChatCompletionResponseDto;
 import com.henrique.audit.dto.groq.GroqChoiceDto;
 import com.henrique.audit.dto.groq.GroqMessageDto;
 import com.henrique.audit.infrastructure.client.groq.GroqClient;
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
 
-import java.time.Duration;
 import java.util.List;
 
 @Service
