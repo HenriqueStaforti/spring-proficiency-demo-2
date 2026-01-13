@@ -2,7 +2,7 @@
 
 Este projeto complementa o repositório principal **spring-proficiency-demo**, demonstrando o uso prático de outras tecnologias do ecossistema **Spring** voltadas para **processamento assíncrono**, **mensageria** e **persistência NoSQL**.
 
-A aplicação expõe uma rota para receber **requisições genéricas de auditoria**, publica esses eventos em um tópico **Kafka**, e o próprio serviço consome a mensagem para então persistir os dados em um banco **MongoDB** — tudo com propósito demonstrativo.
+A aplicação expõe uma rota para receber **requisições genéricas de auditoria**, publica esses eventos em um tópico **Kafka**, e múltiplos consumers processam essas mensagens com finalidades distintas — persistência e análise por IA.
 
 ---
 
@@ -12,8 +12,9 @@ A aplicação expõe uma rota para receber **requisições genéricas de auditor
 - **Spring Web**
 - **Apache Kafka**
 - **Spring Data MongoDB**
+- **Spring Actuator**
+- **Resilience4j (Circuit Breaker)**
 - **OpenAPI documentation**
-- **Lombok**
 - **Docker + Docker Compose**
 - **Maven**
 
@@ -24,12 +25,16 @@ A aplicação expõe uma rota para receber **requisições genéricas de auditor
 ### 📨 Produção e Consumo de Mensagens (Kafka)
 - A aplicação recebe dados de auditoria via uma rota HTTP.
 - O conteúdo recebido é publicado em um tópico Kafka.
-- O próprio serviço escuta esse tópico e consome os eventos.
+- O próprio serviço escuta esse tópico através de múltiplos consumers.
 
 ### 🗄️ Persistência em MongoDB
 - Cada evento consumido do Kafka é persistido em uma coleção MongoDB.
 - Demonstra integração entre mensageria assíncrona e banco NoSQL.
 
+### 🤖 Análise de Auditoria com IA (Groq API)
+- Outro consumer **Kafka** escuta o mesmo tópico de auditoria.
+- Cada evento é enviado para a API do **Groq**, que realiza uma análise do conteúdo através do modelo indicado.
+- O resultado da análise é retornado em um **formato JSON estruturado**, demonstrando integração com serviços de IA generativa.
 ---
 
 ## 🚀 Como Rodar o Projeto

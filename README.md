@@ -1,8 +1,8 @@
 # Spring Proficiency Demo 2
 
-This project complements the main repository **spring-proficiency-demo** by showcasing additional technologies from the **Spring ecosystem**, focused on **asynchronous processing**, **messaging**, and **NoSQL persistence**.
+This project complements the main repository **spring-proficiency-demo**, demonstrating the practical use of **Spring ecosystem** technologies focused on **asynchronous processing**, **messaging**, **external integrations**, **resilience**, and **NoSQL persistence**.
 
-The application exposes an endpoint to receive **generic audit requests**, publishes these events to a **Kafka** topic, and the same service consumes the message to persist the data into **MongoDB** — all for demonstration purposes.
+The application exposes an endpoint to receive **generic audit requests**, publishes these events to a **Kafka topic**, and multiple consumers process the messages for different purposes — persistence and AI analysis.
 
 ---
 
@@ -10,9 +10,11 @@ The application exposes an endpoint to receive **generic audit requests**, publi
 
 - **Spring Boot**
 - **Spring Web**
-- **Spring for Apache Kafka**
+- **Apache Kafka**
 - **Spring Data MongoDB**
-- **Lombok**
+- **Spring Actuator**
+- **Resilience4j (Circuit Breaker)**
+- **OpenAPI documentation**
 - **Docker + Docker Compose**
 - **Maven**
 
@@ -29,6 +31,10 @@ The application exposes an endpoint to receive **generic audit requests**, publi
 - Each consumed Kafka event is stored in a MongoDB collection.
 - Demonstrates the integration between asynchronous messaging and NoSQL databases.
 
+### 🤖 AI-Based Audit Analysis (Groq API)
+* Another **Kafka consumer** listens to the same audit topic.
+* Each event is sent to the **Groq API**, which performs an analysis of the audit content through the model provided.
+* The analysis result is returned in a **structured JSON format**, demonstrating integration with generative AI services.
 ---
 
 ## 🚀 How to Run the Project
