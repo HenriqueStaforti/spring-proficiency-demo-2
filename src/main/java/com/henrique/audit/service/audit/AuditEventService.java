@@ -28,7 +28,7 @@ public class AuditEventService {
                     .description(dto.description())
                     .build();
             auditRepository.save(auditEvent);
-            log.info("Audit event saved successfully: {}", auditEvent);
+            log.debug("Audit event saved successfully: {}", auditEvent);
         } catch (Exception e) {
             log.error("Failed to save audit event: {}", dto, e);
         }

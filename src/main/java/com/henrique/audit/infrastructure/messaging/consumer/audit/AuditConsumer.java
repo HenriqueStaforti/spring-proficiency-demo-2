@@ -19,7 +19,7 @@ public class AuditConsumer {
 
     @KafkaListener(topics = "${app.kafka.topics.audit-events}", groupId = "${app.kafka.group-ids.audit-service-group}")
     public void consume(AuditEventDTO event) {
-        log.info("Consuming audit event: {}", event);
+        log.debug("Consuming audit event: {}", event);
         auditEventService.saveEvent(event);
     }
 }

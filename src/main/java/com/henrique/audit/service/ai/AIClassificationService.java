@@ -26,12 +26,10 @@ public class AIClassificationService {
 
     public AIClassificationResultDto classify(AuditEventDTO event) {
         GroqChatCompletionRequestDto request = getGroqChatCompletionRequestDto(event);
-        log.info("Groq request {}", request);
+        log.debug("Groq request {}", request);
 
         GroqChatCompletionResponseDto response = groqClient.chat(request);
-        log.info("Groq response: {}", response);
-
-        if (response != null) {
+        if (response != null && !response.choices().isEmpty()) {
             GroqChoiceDto choice = response.choices().get(0);
             return new AIClassificationResultDto(
                 choice.message().content(),
@@ -49,7 +47,12 @@ public class AIClassificationService {
                 """
                 You are an audit classification assistant.
                 Classify the event severity as LOW, MEDIUM or HIGH.
-                Respond with a short justification in JSON format.
+                Respond with a short justification.
+                Use the following JSON format for the responses:
+                {
+                   "severity": string,
+                   "justification": string
+                }
                 """
             ),
             new GroqMessageDto(

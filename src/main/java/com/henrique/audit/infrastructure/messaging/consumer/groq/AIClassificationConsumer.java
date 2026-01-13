@@ -20,7 +20,8 @@ public class AIClassificationConsumer {
 
     @KafkaListener(topics = "${app.kafka.topics.audit-events}", groupId = "${app.kafka.group-ids.audit-ai-group}")
     public void consume(AuditEventDTO event) {
-        log.info("Consuming audit event: {}", event);
+        log.debug("Consuming audit event: {}", event);
+
         AIClassificationResultDto result = aiClassificationService.classify(event);
         log.info("AI Classification Result: {}", result);
     }

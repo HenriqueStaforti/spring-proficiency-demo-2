@@ -21,7 +21,7 @@ public class AuditProducer {
     }
 
     public void publish(AuditEventDTO dto) {
-        log.info("Publishing audit event: {} on topic {}", dto, topic);
+        log.debug("Publishing audit event: {} on topic {}", dto, topic);
         kafkaTemplate.send(topic, dto)
             .whenComplete((result, exception) -> {
                 if (exception != null) {
