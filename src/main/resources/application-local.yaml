@@ -32,10 +32,12 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,circuitbreakers,circuitbreakerevents,loggers
+        include: health,circuitbreakers,circuitbreakerevents,loggers,prometheus
   endpoint:
     health:
       show-details: when_authorized
+    prometheus:
+      enabled: true
 
   health:
     circuitbreakers:
